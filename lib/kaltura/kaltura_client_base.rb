@@ -262,7 +262,7 @@ module Kaltura
 		end
 		
 		def self.underscore(val)
-			val.gsub(/(.)([A-Z])/,'\1_\2').downcase
+			val.gsub(/(.)([A-Z]+)/,'\1_\2').downcase
 		end
 		
 		def self.set_instance(object_request_class)
