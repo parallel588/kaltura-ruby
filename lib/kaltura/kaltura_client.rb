@@ -77,6 +77,13 @@ module Kaltura
 		attr_accessor :access_control_id
 		attr_accessor :start_date
 		attr_accessor :end_date
+		attr_accessor :reference_id
+		attr_accessor :replacing_entry_id
+		attr_accessor :replaced_entry_id
+		attr_accessor :replacement_status
+		attr_accessor :partner_sort_value
+		attr_accessor :conversion_profile_id
+		
 
 		def partner_id=(val)
 			@partner_id = val.to_i
@@ -129,6 +136,31 @@ module Kaltura
 		def categories_ids=(val)
 		  @categories_ids = val.to_i
 	  end
+	  
+	  def reference_at=(val)
+      @reference_id = val.to_i
+    end
+    
+    def replacing_entry_id=(val)
+      @replacing_entry_id = val.to_i
+    end
+    
+    def replaced_entry_id=(val)
+      @replaced_entry_id = val.to_i
+    end
+    
+    def replacement_status=(val)
+      @replacement_status = val.to_i
+    end
+    
+    def partner_sort_value=(val)
+      @partner_sort_value = val.to_i
+    end
+    
+    def conversion_profile_id=(val)
+      @conversion_profile_id = val.to_i
+    end
+	  
 	end
 
 	class ModerationFlag < ObjectBase

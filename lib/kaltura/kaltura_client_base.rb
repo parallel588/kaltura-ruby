@@ -221,8 +221,8 @@ module Kaltura
 		attr_accessor :timeout
 		attr_accessor :partner_id
 	
-		def initialize(partner_id = -1)
-			@service_url 	= "http://www.kaltura.com"
+		def initialize(partner_id = -1, service_url="http://www.kaltura.com")
+			@service_url 	= service_url
 			@format 		= 2 # xml
 			@client_tag 	= "ruby"
 			@timeout 		= 10
