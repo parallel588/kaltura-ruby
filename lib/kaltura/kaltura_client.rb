@@ -83,6 +83,8 @@ module Kaltura
 		attr_accessor :replacement_status
 		attr_accessor :partner_sort_value
 		attr_accessor :conversion_profile_id
+    attr_accessor :root_entry_id
+    attr_accessor :operation_attributes
 		
 
 		def partner_id=(val)
@@ -161,6 +163,13 @@ module Kaltura
       @conversion_profile_id = val.to_i
     end
 	  
+    def root_entry_id=(val)
+      @root_entry_id = val.to_i
+    end
+
+    def operation_attributes=(val)
+      @operation_attributes = val.to_i
+    end
 	end
 
 	class ModerationFlag < ObjectBase

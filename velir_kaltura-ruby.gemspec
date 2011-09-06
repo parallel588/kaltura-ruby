@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{velir_kaltura-ruby}
-  s.version = "0.4.10"
+  s.version = "0.4.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Patrick Robertson"]
