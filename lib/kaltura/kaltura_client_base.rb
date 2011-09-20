@@ -66,8 +66,6 @@ module Kaltura
 			result = do_http_request(url, params)
 			
 			result_object = parse_to_objects(result.body)
-
-			log("result (object yaml dump): " + result_object.to_yaml)
 			
 			end_time = Time.now
 			log("execution time for [#{url}]: [#{end_time - start_time}]")

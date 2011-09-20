@@ -517,6 +517,8 @@ module Kaltura
 		attr_accessor :updated_at
 		attr_accessor :deleted_at
 		attr_accessor :description
+    attr_accessor :partner_data
+    attr_accessor :partner_description
 
 		def partner_id=(val)
 			@partner_id = val.to_i
@@ -560,6 +562,12 @@ module Kaltura
 		def deleted_at=(val)
 			@deleted_at = val.to_i
 		end
+    def partner_data=(val)
+      @partner_data = val.to_i
+    end
+    def partner_description=(val)
+      @partner_description = val.to_i
+    end
 	end
 
 	class FlavorParams < ObjectBase
@@ -588,6 +596,8 @@ module Kaltura
 		attr_accessor :rotate
 		attr_accessor :operators
 		attr_accessor :engine_version
+    attr_accessor :partner_data
+    attr_accessor :partner_description
 
 		def id=(val)
 			@id = val.to_i
@@ -639,6 +649,12 @@ module Kaltura
     end
     def engine_version=(val)
       @engine_version = val.to_i
+    end
+    def partner_data=(val)
+      @partner_data= val.to_i
+    end
+    def partner_description=(val)
+      @partner_description = val.to_i
     end
 	end
 
