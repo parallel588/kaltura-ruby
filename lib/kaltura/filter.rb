@@ -20,33 +20,35 @@ require 'kaltura/filter/base_job_filter'
 require 'kaltura/filter/batch_job_filter'
 require 'kaltura/filter/control_panel_command_filter'
 require 'kaltura/filter/document_entry_filter'
+require 'kaltura/filter/distribution_provider_base_filter'
+require 'kaltura/filter/distribution_provider_filter'
 
 
 module Kaltura
   module Filter
-  		
+
   	class DataEntryFilter < BaseEntryFilter
   	end
-  	
+
   	class LiveStreamEntryFilter < MediaEntryFilter
   	end
-  	
+
   	class MixEntryFilter < PlayableEntryFilter
   	end
-  	
+
   	class PlaylistFilter < BaseEntryFilter
   	end
-  	  	
+
   	class BaseSyndicationFeedFilter < BaseFilter
   	end
-  	  		  	
+
   	class SystemUserFilter < BaseFilter
   	end
-  	  		  	
+
   	class MediaInfoFilter < BaseFilter
   		attr_accessor :flavor_asset_id_equal
   	end
-  	
+
   	class BatchJobFilterExt < BatchJobFilter
   		attr_accessor :job_type_and_sub_type_in
   	end

@@ -30,12 +30,16 @@ require 'kaltura/service/x_internal_service'
 require 'kaltura/service/system_user_service'
 require 'kaltura/service/system_partner_service'
 
+require 'kaltura/service/distribution_profile_service'
+require 'kaltura/service/distribution_provider_service'
+require 'kaltura/service/entry_distribution_service'
+
 module Kaltura
   ##
   # The service module provides instance methods to the Kaltura::Client class.  This is the bulk of API actions.
   ##
   module Service
-      
+
     ##
     # FileSyncService is a system user service.
     #
@@ -47,9 +51,9 @@ module Kaltura
     #    pager.page_size = 100
     #    client.file_sync_service.list(filter,pager)
     #
-    ##      	  		  		  			  			  		  		  	  	  		  	
+    ##
   	class FileSyncService < BaseService
-      
+
       ##
       # Lists file sync objects by a filter and a pager.
       #
@@ -67,7 +71,7 @@ module Kaltura
   			perform_request('fileSync','list',kparams,false)
   		end
   	end #class FileSyncService
-  	
+
   	##
   	# FlavorParamsOutputService is not documented by Kaltura.  Probably best to not play with this.
   	# This is likely just used internally by the KMC.
@@ -79,9 +83,9 @@ module Kaltura
       #
       # @param [Kaltura::Filter::FlavorParamsOutputFilter] filter The filter to apply to the list action.
       # @param [Kaltura::FilterPager] pager The default pager to apply to large lists.
-      # 
+      #
       # @return [Kaltura::Response::FlavorParamsOutputListResponse] This is equivalent to the BaseResponse class.
-      # 
+      #
       # @raise [Kaltura::APIError] raises default Kaltura errors.
       ##
   		def list(filter=nil, pager=nil)
@@ -91,7 +95,7 @@ module Kaltura
   			perform_request('flavorParamsOutput','list',kparams,false)
   		end
   	end #class FlavorParamsOutputService
-  	
+
   	##
   	# MediaInfoService is not documented by Kaltura.  Probably best to not play with this.
   	# This is likely just used internally by the KMC.
@@ -114,7 +118,7 @@ module Kaltura
   			perform_request('mediaInfo','list',kparams,false)
   		end
   	end #class MediaInfoService
-  	
+
   	##
   	# EntryAdminService is not documented by Kaltura.  Probably best not to play with this.
   	# This is likely just used internally by the KMC.
@@ -127,8 +131,8 @@ module Kaltura
       # @param [String] entry_id Media entry id
       # @param [Integer] version Desired version of the data.
       #
-      # @return [Object] Not entirely sure what this returns.  
-      # 
+      # @return [Object] Not entirely sure what this returns.
+      #
       # @raise [Kaltura::APIError] Raises default Kaltura errors.
       ##
   		def get(entry_id, version=-1)

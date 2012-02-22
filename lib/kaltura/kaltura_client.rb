@@ -1,10 +1,141 @@
 
 module Kaltura
+  class DistributionFieldConfig < ObjectBase
+    attr_accessor :entry_mrss_xslt #	string	V	An XSLT string that extracts the right value from the Kaltura entry MRSS XML.
+    # The value of the current connector field will be the one that is returned from transforming
+    # the Kaltura entry MRSS XML using this XSLT string.
+    attr_accessor :field_name #	string	V	A value taken from a connector field enum which associates the current configuration to that connector field
+    #     Field enum class should be returned by the provider's getFieldEnumClass function.
+		attr_accessor :is_default #	bool		Is this field config is the default for the distribution provider?
+		attr_accessor :is_required #	KalturaDistributionFieldRequiredStatus	V	Is the field required to have a value for submission ?
+		attr_accessor :update_on_change #	bool	V	Trigger distribution update when this field changes or not ?
+		attr_accessor :update_params #	KalturaStringArray	V	Entry column or metadata xpath that should trigger an update
+    # TODO: find a better solution for this
+		attr_accessor :user_friendly_field_name #	string	V	A string that will be shown to the user as the field name in error messages related to the current field
+  end
+  class DistributionProfile < ObjectBase
+		attr_accessor :auto_create_flavors #	string	V	Comma separated flavor params ids that should be auto converted
+		attr_accessor :auto_create_thumb #	string	V	Comma separated thumbnail params ids that should be auto generated
+		attr_accessor :created_at #	int		Profile creation date as Unix timestamp (In seconds)
+		attr_accessor :delete_enabled	#KalturaDistributionProfileActionStatus	V
+		attr_accessor :id	#int		Auto generated unique id
+		attr_accessor :name	#string	V
+		attr_accessor :optional_flavor_params_ids	#string	V	Comma separated flavor params ids that should be submitted if ready
+		attr_accessor :optional_thumb_dimensions	#KalturaDistributionThumbDimensionsArray	V	Thumbnail dimensions that should be submitted if ready
+		attr_accessor :partner_id	#int
+		attr_accessor :provider_type	#KalturaDistributionProviderType	V
+		attr_accessor :report_enabled	#KalturaDistributionProfileActionStatus	V
+		attr_accessor :required_flavor_params_ids	#string	V	Comma separated flavor params ids that required to be readt before submission
+		attr_accessor :required_thumb_dimensions	#KalturaDistributionThumbDimensionsArray	V	Thumbnail dimensions that required to be readt before submission
+		attr_accessor :status	#KalturaDistributionProfileStatus	V
+		attr_accessor :submit_enabled	#KalturaDistributionProfileActionStatus	V
+		attr_accessor :sunrise_default_offset	#int	V	If entry distribution sunrise not specified that will be the default since entry creation time, in seconds
+		attr_accessor :sunset_default_offset	#int	V	If entry distribution sunset not specified that will be the default since entry creation time, in seconds
+		attr_accessor :update_enabled	#KalturaDistributionProfileActionStatus	V
+		attr_accessor :updated_at	#int		Profile last update date as Unix timestamp (In seconds)
+
+  end
+  class ConfigurableDistributionProfile < DistributionProfile
+  end
+  class ExampleDistributionProfile < DistributionProfile
+  end
+  class FreewheelDistributionProfile < DistributionProfile
+  end
+  class GenericDistributionProfile < DistributionProfile
+  end
+  class PodcastDistributionProfile < DistributionProfile
+  end
+  class SyndicationDistributionProfile < DistributionProfile
+  end
+  class YoutubeApiDistributionProfile < ConfigurableDistributionProfile
+    attr_accessor :allowComments
+		attr_accessor :allowEmbedding
+		attr_accessor :allowRatings
+		attr_accessor :allowResponses
+		attr_accessor :defaultCategor
+		attr_accessor :password
+		attr_accessor :username
+  end
+  class DistributionProvider < ObjectBase
+		attr_accessor :type # type	KalturaDistributionProviderType
+    attr_accessor :availability_update_enabled #	bool
+    attr_accessor :delete_instead_update #	bool
+    attr_accessor :interval_before_sunrise#	int
+    attr_accessor :interval_before_sunset#	int
+    attr_accessor :name #	string
+    attr_accessor :schedule_update_enabled #	bool
+
+    attr_accessor :update_required_entry_fields #	string
+    attr_accessor :update_required_metadata_xpaths #	string
+
+  end
+  class GenericDistributionProvider < DistributionProvider
+    # availability_update_enabled=
+    attr_accessor :created_at	#int		Generic distribution provider creation date as Unix timestamp (In seconds)
+    attr_accessor :editable_fields#	string	V
+    attr_accessor :id#	int		Auto generated
+    attr_accessor :is_default#	bool	V
+    attr_accessor :mandatory_fields#	string	V
+    attr_accessor :optional_flavor_params_ids#	string	V
+    attr_accessor :optional_thumb_dimensions#	Kaltura DistributionThumbDimensionsArray	V
+    attr_accessor :partner_id#	int
+    attr_accessor :required_flavor_params_ids#	string	V
+    attr_accessor :required_thumb_dimensions#	Kaltura DistributionThumbDimensionsArray	V
+    attr_accessor :status #	Kaltura GenericDistributionProviderStatus
+    attr_accessor :updated_at#	int
+  end
+  class DistributionProviderType < ObjectBase
+  end
+
+  class SyndicationDistributionProvider < DistributionProvider
+  end
+  class MsnDistributionProvider < DistributionProvider
+  end
+  class YouTubeDistributionProvider < DistributionProvider
+  end
+  class YoutubeApiDistributionProvider < DistributionProvider
+  end
+  class DailymotionDistributionProvider < DistributionProvider
+  end
+  class PodcastDistributionProvider < DistributionProvider
+  end
+  class TVComDistributionProvider < DistributionProvider
+  end
+  class FreewheelDistributionProvider < DistributionProvider
+  end
+  class FreewheelGenericDistributionProvider < DistributionProvider
+  end
+  class HuluDistributionProvider < DistributionProvider
+  end
+  class DoubleClickDistributionProvider < DistributionProvider
+  end
+  class SynacorHboDistributionProvider < DistributionProvider
+  end
+  class AvnDistributionProvider < DistributionProvider
+  end
+  class ComcastMrssDistributionProvider < DistributionProvider
+  end
+  class IdeticDistributionProvider < DistributionProvider
+  end
+  class TimeWarnerDistributionProvider < DistributionProvider
+  end
+  class YahooDistributionProvider < DistributionProvider
+  end
+  class NdnDistributionProvider < DistributionProvider
+  end
+  class UverseDistributionProvider < DistributionProvider
+  end
+  class VerizonVcastDistributionProvider < DistributionProvider
+  end
+  class QuickPlayDistributionProvider < DistributionProvider
+  end
+
+
+
 
 	class BaseRestriction < ObjectBase
 
 	end
-
 	class AccessControl < ObjectBase
 		attr_accessor :id
 		attr_accessor :partner_id
@@ -85,7 +216,7 @@ module Kaltura
 		attr_accessor :conversion_profile_id
     attr_accessor :root_entry_id
     attr_accessor :operation_attributes
-		
+
 
 		def partner_id=(val)
 			@partner_id = val.to_i
@@ -138,31 +269,31 @@ module Kaltura
 		def categories_ids=(val)
 		  @categories_ids = val.to_i
 	  end
-	  
+
 	  def reference_at=(val)
       @reference_id = val.to_i
     end
-    
+
     def replacing_entry_id=(val)
       @replacing_entry_id = val.to_i
     end
-    
+
     def replaced_entry_id=(val)
       @replaced_entry_id = val.to_i
     end
-    
+
     def replacement_status=(val)
       @replacement_status = val.to_i
     end
-    
+
     def partner_sort_value=(val)
       @partner_sort_value = val.to_i
     end
-    
+
     def conversion_profile_id=(val)
       @conversion_profile_id = val.to_i
     end
-	  
+
     def root_entry_id=(val)
       @root_entry_id = val.to_i
     end
