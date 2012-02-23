@@ -1,5 +1,60 @@
 
 module Kaltura
+
+  class EntryDistribution < ObjectBase
+    attr_accessor :id
+		attr_accessor :created_at
+		attr_accessor :updated_at
+		attr_accessor :submitted_at
+		attr_accessor :entry_id
+		attr_accessor :partner_id
+		attr_accessor :distribution_profile_id
+		attr_accessor :status
+		attr_accessor :sun_status
+		attr_accessor :dirty_status
+		attr_accessor :thumb_asset_ids
+		attr_accessor :flavor_asset_ids
+		attr_accessor :sunrise
+		attr_accessor :sunset
+		attr_accessor :remote_id
+		attr_accessor :plays
+		attr_accessor :views
+		attr_accessor :validation_errors
+		attr_accessor :error_type
+		attr_accessor :error_number
+		attr_accessor :error_description
+		attr_accessor :has_submit_results_log
+		attr_accessor :has_submit_sent_data_log
+		attr_accessor :has_update_results_log
+		attr_accessor :has_update_sent_data_log
+		attr_accessor :has_delete_results_log
+		attr_accessor :has_delete_sent_data_log
+
+  end
+
+  class DistributionValidationError < ObjectBase
+    attr_accessor :action
+		attr_accessor :error_type
+		attr_accessor :description
+
+  end
+  class DistributionValidationErrorInvalidData < DistributionValidationError
+    attr_accessor :field_name
+		attr_accessor :validation_error_type
+		attr_accessor :validation_error_param
+  end
+
+  class DistributionValidationErrorMissingFlavor < DistributionValidationError
+    attr_accessor :flavor_params_id
+
+  end
+  class DistributionValidationErrorMissingMetadata < DistributionValidationError
+    attr_accessor :field_name
+  end
+  class DistributionValidationErrorMissingThumbnail < DistributionValidationError
+    attr_accessor :dimensions
+  end
+
   class DistributionFieldConfig < ObjectBase
     attr_accessor :entry_mrss_xslt #	string	V	An XSLT string that extracts the right value from the Kaltura entry MRSS XML.
     # The value of the current connector field will be the one that is returned from transforming

@@ -112,6 +112,7 @@ module Kaltura
     end
     class DistributionProfileListResponse < BaseResponse
     end
-
+    class EntryDistributionListResponse < BaseResponse
+    end
   end #module Response
 end #module Kaltura
