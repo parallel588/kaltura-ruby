@@ -1853,6 +1853,18 @@ module Kaltura
 			end
 			return @media_service
 		end
+
+    attr_reader :distribution_profile_service
+    def distribution_profile_service
+      @distribution_profile_service ||= Kaltura::Service::DistributionProfileService.new(self)
+      @distribution_profile_service
+    end
+
+    attr_reader :entry_distribution_service
+    def entry_distribution_service
+      @entry_distribution_service ||= Kaltura::Service::EntryDistributionService.new(self)
+        @entry_distribution_service
+    end
 		attr_reader :mixing_service
 		def mixing_service
 			if (@mixing_service == nil)

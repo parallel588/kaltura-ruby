@@ -183,6 +183,11 @@ module Kaltura
 	class ObjectBase
 		attr_accessor :object_type
 
+    def initialize(*attrs)
+      @options = attrs.last.is_a?(::Hash) ? attrs.pop : {}
+      (@options||[]).each {  |k,v| self.send("#{k}=", v) if self.respond_to?("#{k}=")  }
+    end
+
 		def to_params
 			params = {};
 			params["objectType"] = self.class.name.split('::').last

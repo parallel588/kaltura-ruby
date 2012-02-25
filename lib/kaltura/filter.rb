@@ -22,6 +22,8 @@ require 'kaltura/filter/control_panel_command_filter'
 require 'kaltura/filter/document_entry_filter'
 require 'kaltura/filter/distribution_provider_base_filter'
 require 'kaltura/filter/distribution_provider_filter'
+require 'kaltura/filter/entry_distribution_base_filter'
+require 'kaltura/filter/entry_distribution_filter'
 
 
 module Kaltura
